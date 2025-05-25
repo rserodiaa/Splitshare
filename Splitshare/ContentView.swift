@@ -23,16 +23,12 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                .onMove(perform: moveItems(from:to:))
             }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
             .toolbar {
-#if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
-#endif
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
@@ -46,7 +42,8 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let order = items.count
+            let newItem = Item(timestamp: Date(), order: order)
             modelContext.insert(newItem)
         }
     }
@@ -56,6 +53,17 @@ struct ContentView: View {
             for index in offsets {
                 modelContext.delete(items[index])
             }
+        }
+    }
+    
+    private func moveItems(from source: IndexSet, to destination: Int) {
+        withAnimation {
+            var revisedItems = items
+            revisedItems.move(fromOffsets: source, toOffset: destination)
+            for (index, item) in revisedItems.enumerated() {
+                item.order = index
+            }
+            // Save context if needed
         }
     }
 }
