@@ -25,7 +25,7 @@ struct SplitshareApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            LandingView()
         }
         .modelContainer(sharedModelContainer)
     }

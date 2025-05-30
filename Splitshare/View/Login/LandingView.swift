@@ -18,7 +18,7 @@ struct LandingView: View {
             VStack {
                 Spacer()
 
-                LoginButton(title: "Get Started") {
+                LoginButton(title: "Get Started, its free!!") {
                     
                 }
                 .padding(.bottom)

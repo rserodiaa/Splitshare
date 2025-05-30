@@ -11,8 +11,8 @@ import SwiftUI
 struct SocialSignupView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
-            Color(hex: "#393D47")
-                            .ignoresSafeArea()
+            Colors.bgColor
+                  .ignoresSafeArea()
             VStack {
                 Spacer()
                 
@@ -55,7 +55,7 @@ struct SocialSignupView: View {
                             .scaledToFit()
                             .padding(.horizontal, 20)
                             .frame(width: .screenWidth, height: 50)
-                            .shadow(color: Color(hex: "#888B8D").opacity(0.5), radius: 5, y: 3)
+                            .shadow(color: Colors.lightGray.opacity(0.5), radius: 5, y: 3)
                         HStack {
                             Image("google")
                                 .resizable()
@@ -97,7 +97,7 @@ struct SocialSignupView: View {
                     }
                 }
                 .foregroundColor(.white)
-                .shadow(color: Color(hex: "#888B8D").opacity(0.5), radius: 5, y: 3)
+                .shadow(color: Colors.lightGray.opacity(0.5), radius: 5, y: 3)
 
                 Text("OR")
                     .font(Font.customFont(size: 18))
@@ -110,7 +110,7 @@ struct SocialSignupView: View {
                 .padding(.bottom, 10)
                 
                 Text("By registering, you agree to our Terms & Conditions and Privacy Policy of SplitShare")
-                    .foregroundColor(Color(hex: "#888B8D"))
+                    .foregroundColor(Colors.lightGray)
                     .font(Font.customFont(size: 12))
                     .multilineTextAlignment(.center)
                     .padding(.bottom)
