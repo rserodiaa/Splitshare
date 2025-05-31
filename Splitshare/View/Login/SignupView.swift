@@ -31,14 +31,14 @@ struct SignupView: View {
                 
                 if isSignUpPage {
                      PasswordStrengthIndicator(strength: passwordStrength)
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, 40)
                     .padding(.bottom, 10)
                     
-                    Text("Use 8 or more characters with a mix of letters, numbers & symbols")
+                    Text("Use 8 or more characters with a mix of letters, numbers & symbols.")
                         .multilineTextAlignment(.leading)
                         .font(Font.customFont(font: .regular, size: 12))
                         .foregroundColor(Colors.lightGray)
-                        .padding(.horizontal, 10)
+                        .padding(.horizontal, 15)
                     
                 }
                 LoginButton(title: isSignUpPage ? "Get Started, its free!!" : "Sign in") {
