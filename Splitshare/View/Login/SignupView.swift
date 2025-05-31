@@ -12,6 +12,7 @@ struct SignupView: View {
     @State private var txtEmail: String = ""
     @State private var txtPassword: String = ""
     @State var isSignUpPage: Bool = false
+    @Environment(\.dismiss) private var dismiss
     
     private var passwordStrength: Int {
        getPasswordStrength(txtPassword)
@@ -23,6 +24,9 @@ struct SignupView: View {
                 .ignoresSafeArea()
             
             VStack {
+                
+                BackButton()
+                
                 Spacer()
                 
                 RoundedTextField(headerText: "E-mail Address", text: $txtEmail)
@@ -30,9 +34,9 @@ struct SignupView: View {
                 PasswordField(headerText: "Password", password: $txtPassword)
                 
                 if isSignUpPage {
-                     PasswordStrengthIndicator(strength: passwordStrength)
-                    .padding(.horizontal, 40)
-                    .padding(.bottom, 10)
+                    PasswordStrengthIndicator(strength: passwordStrength)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 10)
                     
                     Text("Use 8 or more characters with a mix of letters, numbers & symbols.")
                         .multilineTextAlignment(.leading)
@@ -72,6 +76,9 @@ struct SignupView: View {
             .ignoresSafeArea(edges: .bottom)
             
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

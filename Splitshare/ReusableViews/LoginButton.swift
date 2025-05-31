@@ -19,7 +19,7 @@ struct LoginButton: View {
     
     var body: some View {
         Button {
-            
+            onPressed()
         } label: {
             ZStack {
                 Text(title)
