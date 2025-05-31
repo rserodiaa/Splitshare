@@ -47,6 +47,5 @@ extension Color {
 struct Colors {
     static let bgColor = Color(hex: "#393D47")
     static let primaryColor = Color("#3498db")
-    static let lightGray = Color(hex: "#888B8D")
-    
+    static let lightGray = Color(hex: "#888B8D")    
 }

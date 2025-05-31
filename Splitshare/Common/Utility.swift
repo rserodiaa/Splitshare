@@ -33,3 +33,22 @@ extension CGFloat {
     }
     
 }
+
+func getPasswordStrength(_ password: String) -> Int {
+    var strength = 0
+    
+    if password.count >= 8 {
+        strength += 1
+    }
+    if password.rangeOfCharacter(from: .decimalDigits) != nil {
+        strength += 1
+    }
+    if password.rangeOfCharacter(from: .lowercaseLetters) != nil &&
+        password.rangeOfCharacter(from: .uppercaseLetters) != nil {
+        strength += 1
+    }
+    if password.rangeOfCharacter(from: CharacterSet(charactersIn: "!@#$%^&*")) != nil {
+        strength += 1
+    }
+    return strength
+}
