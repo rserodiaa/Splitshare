@@ -13,39 +13,24 @@ struct SignupView: View {
     @State private var txtPassword: String = ""
     @State var isSignUpPage: Bool = false
     
+    private var passwordStrength: Int {
+       getPasswordStrength(txtPassword)
+    }
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Colors.bgColor
-                  .ignoresSafeArea()
-                
+                .ignoresSafeArea()
+            
             VStack {
                 Spacer()
-
+                
                 RoundedTextField(headerText: "E-mail Address", text: $txtEmail)
                 
-                PasswordField(headerText: "Password", password: txtPassword)
+                PasswordField(headerText: "Password", password: $txtPassword)
                 
                 if isSignUpPage {
-                    
-                    HStack {
-                        Rectangle()
-                            .fill(Color(hex: "#C70039"))
-                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 4)
-                            .padding(.horizontal, 2)
-                        Rectangle()
-                            .fill(Color(hex: "#FF5733"))
-                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 4)
-                            .padding(.horizontal, 2)
-                        Rectangle()
-                            .fill(Color(hex: "#FFC300"))
-                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 4)
-                            .padding(.horizontal, 2)
-                        Rectangle()
-                            .fill(Color(hex: "#33ff55"))
-                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 4)
-                            .padding(.horizontal, 2)
-                        Spacer()
-                    }
+                     PasswordStrengthIndicator(strength: passwordStrength)
                     .padding(.horizontal, 30)
                     .padding(.bottom, 10)
                     
@@ -81,8 +66,8 @@ struct SignupView: View {
                 Image("appLogo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: .screenWidth, height: 150)                    
-                    
+                    .frame(width: .screenWidth, height: 150)
+                
             }
             .ignoresSafeArea(edges: .bottom)
             
@@ -91,5 +76,5 @@ struct SignupView: View {
 }
 
 #Preview {
-    SignupView(isSignUpPage: false)
+    SignupView(isSignUpPage: true)
 }
