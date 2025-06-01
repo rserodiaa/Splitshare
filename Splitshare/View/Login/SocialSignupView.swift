@@ -14,6 +14,8 @@ struct SocialSignupView: View {
             Colors.bgColor
                   .ignoresSafeArea()
             VStack {
+                BackButton()
+                
                 Spacer()
                 
                 Button {
@@ -124,6 +126,9 @@ struct SocialSignupView: View {
             }
             .ignoresSafeArea(edges: .bottom)
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         
     }
 }
