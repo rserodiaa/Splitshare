@@ -52,3 +52,11 @@ func getPasswordStrength(_ password: String) -> Int {
     }
     return strength
 }
+
+enum CustomTabs: String, CaseIterable {
+    case home = "house.circle"
+    case calendar = "calendar.circle"
+    case card = "creditcard.circle"
+    case profile = "person.crop.circle"
+    
+}
