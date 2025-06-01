@@ -69,7 +69,7 @@ struct SignupView: View {
                 }
                 Image("appLogo")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(width: .screenWidth, height: 150)
                 
             }
