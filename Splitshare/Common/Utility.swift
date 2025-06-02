@@ -32,6 +32,30 @@ extension CGFloat {
         UIScreen.main.bounds.size
     }
     
+    static func widthPer(per: Double) -> Double {
+        return screenWidth * per
+    }
+    
+    static func heightPer(per: Double) -> Double {
+        return screenWidth * per
+    }
+    
+    static var topInset: CGFloat {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+        return keyWindow?.safeAreaInsets.top ?? 0
+    }
+    
+    static var bottomInset: CGFloat {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+        return keyWindow?.safeAreaInsets.bottom ?? 0
+    }
+        
 }
 
 func getPasswordStrength(_ password: String) -> Int {

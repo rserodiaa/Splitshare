@@ -20,12 +20,12 @@ struct LandingView: View {
             VStack {
                 Spacer()
                 
-                LoginButton(title: "Get Started, its free!!") {
+                GradientButton(title: "Get Started, its free!!") {
                     isShowingSignup = true
                 }
                 .padding(.bottom)
                 
-                LoginButton(title: "I Already Have An Account", type: .secondary) {
+                GradientButton(title: "I Already Have An Account", type: .secondary) {
                     isShowingSignin.toggle()
                 }
                 .padding(.bottom, 20)

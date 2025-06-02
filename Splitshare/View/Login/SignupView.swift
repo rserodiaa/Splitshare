@@ -45,7 +45,7 @@ struct SignupView: View {
                         .padding(.horizontal, 15)
                     
                 }
-                LoginButton(title: isSignUpPage ? "Get Started, its free!!" : "Sign in") {
+                GradientButton(title: isSignUpPage ? "Get Started, its free!!" : "Sign in") {
                     
                 }
                 .padding(.bottom, isSignUpPage ? 60 : 200)
@@ -61,7 +61,7 @@ struct SignupView: View {
                         .foregroundColor(.white)
                         .padding(.bottom, 10)
                     
-                    LoginButton(title: "Sign in", type: .secondary) {
+                    GradientButton(title: "Sign in", type: .secondary) {
                         
                     }
                     .padding(.bottom, 20)

@@ -1,5 +1,5 @@
 //
-//  PrimaryButton.swift
+//  GradientButton.swift
 //  Splitshare
 //
 //  Created by Rahul Serodia on 25/05/25.
@@ -12,7 +12,7 @@ enum ButtonType {
     case secondary
 }
 
-struct LoginButton: View {
+struct GradientButton: View {
     var title: String
     var type: ButtonType = .primary
     var onPressed: () -> ()
@@ -42,7 +42,7 @@ struct LoginButton: View {
 
 struct LoginButton_Previews: PreviewProvider {
     static var previews: some View {
-        LoginButton(title: "Get Started", type: .primary) {
+        GradientButton(title: "Get Started", type: .primary) {
             // Action when button is pressed
             
         }

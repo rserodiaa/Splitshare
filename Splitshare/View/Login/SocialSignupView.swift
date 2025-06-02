@@ -8,105 +8,76 @@
 
 import SwiftUI
 
+enum SocialSignupType: String, CaseIterable, Identifiable, Hashable {
+    case apple, google, facebook
+    var id: String { rawValue }
+
+    var backgroundImage: String {
+        switch self {
+        case .apple: return "apple_btn"
+        case .google: return "google_btn"
+        case .facebook: return "fb_btn"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .apple: return "apple"
+        case .google: return "google"
+        case .facebook: return "fb"
+        }
+    }
+
+    var text: String {
+        switch self {
+        case .apple: return "Sign up with Apple"
+        case .google: return "Sign up with Google"
+        case .facebook: return "Sign up with Facebook"
+        }
+    }
+    
+    var textColor: Color {
+        switch self {
+        case .apple, .facebook: return .white
+        case .google: return .black
+        }
+    }
+
+    var shadowColor: Color {
+        switch self {
+        case .apple: return .black.opacity(0.3)
+        case .google, .facebook: return Colors.lightGray.opacity(0.5)
+        }
+    }
+}
+
+
 struct SocialSignupView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Colors.bgColor
-                  .ignoresSafeArea()
+                .ignoresSafeArea()
             VStack {
                 BackButton()
                 
                 Spacer()
                 
-                Button {
-                    
-                } label: {
-                    ZStack {
-                       Image("apple_btn")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.horizontal, 20)
-                            .frame(width: .screenWidth, height: 50)
-                            .shadow(color: .black.opacity(0.3), radius: 5, y: 3)
-                        HStack {
-                            Image("apple")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.blue)
-                            
-                            
-                            Text("Sign up with Apple")
-                                .font(Font.customFont(font: .semibold,  size: 16))
-                                .foregroundColor(.white)
-                        }
-                        .padding(.horizontal, 20)
+                ForEach(SocialSignupType.allCases) { provider in
+                    SocialSignInButton(backgroundImage: provider.backgroundImage,
+                                        icon: provider.icon,
+                                        text: provider.text,
+                                        textColor: provider.textColor,
+                                        shadowColor: provider.shadowColor) {
+                        print("Tapped \(provider.text)")
                     }
                 }
-                .foregroundColor(.black)
-                .padding(.bottom, 10)
-
                 
-                
-                Button {
-                    
-                } label: {
-                    ZStack {
-                       Image("google_btn")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.horizontal, 20)
-                            .frame(width: .screenWidth, height: 50)
-                            .shadow(color: Colors.lightGray.opacity(0.5), radius: 5, y: 3)
-                        HStack {
-                            Image("google")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.blue)
-                            
-                            
-                            Text("Sign up with Google")
-                                .font(Font.customFont(font: .semibold,  size: 16))
-                        }
-                        .padding(.horizontal, 20)
-                    }
-                }
-                .foregroundColor(.black)
-                .padding(.bottom, 10)
-
-                
-                Button {
-                    
-                } label: {
-                    ZStack {
-                       Image("fb_btn")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.horizontal, 20)
-                            .frame(width: .screenWidth, height: 50)
-                        HStack {
-                            Image("fb")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                            
-                            
-                            Text("Sign up with Facebook")
-                                .font(Font.customFont(font: .semibold, size: 16))
-                        }
-                        .padding(.horizontal, 20)
-                    }
-                }
-                .foregroundColor(.white)
-                .shadow(color: Colors.lightGray.opacity(0.5), radius: 5, y: 3)
-
                 Text("OR")
                     .font(Font.customFont(size: 18))
                     .foregroundColor(.white)
                     .padding([.vertical], 20)
-
-                LoginButton(title: "Sign-up with email", type: .secondary) {
+                
+                GradientButton(title: "Sign-up with email", type: .secondary) {
                     
                 }
                 .padding(.bottom, 10)
@@ -117,12 +88,13 @@ struct SocialSignupView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom)
                     .lineSpacing(3)
-                                
+                    .padding(.horizontal, 30)
+                
                 Image("appLogo")
                     .resizable()
                     .scaledToFill()
                     .frame(width: .screenWidth, height: 150)
-                    
+                
             }
             .ignoresSafeArea(edges: .bottom)
         }
